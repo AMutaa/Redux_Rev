@@ -13,16 +13,16 @@ const initialState = {
 }
 
 
-const reducer = (state = {}, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_MOVIES_PENDING": {
+    case "FETCH_MOVIES_START": {
       return {
         ...state,
         fetching: true
       }
       break;
     }
-    case "RECEIVE_MOVIES_REJECTED": {
+    case "RECEIVE_MOVIES": {
       return {
         ...state,
         fetching: false,
@@ -30,7 +30,7 @@ const reducer = (state = {}, action) => {
       }
       break;
     }
-    case "RECEIVE_MOVIES_FULFILLED": {
+    case "RECEIVE_MOVIES": {
       return {
         ...state,
         fetching: false,
