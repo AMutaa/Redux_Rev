@@ -1,35 +1,14 @@
-import { combineReducers, createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 
-const userReducer = (state = {}, action) => {
-  switch (action.type) {
-    case 'CHANGE_NAME': {
-      state = { ...state, name: action.payload }
-      break;
-    }
-    case 'CHANGE_AGE': {
-      state = { ...state, age: action.payload }
-      break;
-    }
-  }
-  return state;
-};
+const reducer = (state = {}, action) => {
+  return state
+}
 
-const tweetsReducer = (state = [], action) => {
-  return state;
-};
-
-const reducers = combineReducers({
-  user: userReducer,
-  tweets: tweetsReducer
-})
-const store = createStore(reducers, {
-
-})
+const middleware = applyMiddleware()
+const store = createStore(reducer, middleware)
 
 store.subscribe(() => {
-  console.log('store changed', store.getState())
+  console.log("store changed", store.getState())
 })
 
-store.dispatch({ type: 'CHANGE_NAME', payload: 'Adam' })
-store.dispatch({ type: 'CHANGE_AGE', payload: 35 })
-store.dispatch({ type: 'CHANGE_AGE', payload: 40 })
+store.dispatch({ type: 'FOO' })
