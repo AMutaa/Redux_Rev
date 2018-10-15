@@ -3,8 +3,41 @@ import axios from 'axios';
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
+const initialState = {
+  fetching: false,
+  fetched: false,
+  movies: [],
+  error: null,
+}
+
 
 const reducer = (state = {}, action) => {
+  switch (action.type) {
+    case "FETCH_MOVIES_START": {
+      return {
+        ...state,
+        fetching: true
+      }
+      break;
+    }
+    case "RECEIVE_MOVIES": {
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
+      }
+      break;
+    }
+    case "RECEIVE_MOVIES": {
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        movies: action.payload
+      }
+      break;
+    }
+  }
   return state
 }
 
