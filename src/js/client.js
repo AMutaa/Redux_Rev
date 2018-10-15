@@ -1,23 +1,19 @@
 import { combineReducers, createStore } from 'redux'
 
-const userReducer = function (state = {}, actions) => {
-
+const userReducer = (state = {}, actions) => {
+  return state;
 };
 
-const tweetsReducer = function (state, actions) => {
-
-
+const tweetsReducer = (state = [], actions) => {
+  return state;
 };
 
 const reducers = combineReducers({
-  user: userReducer
+  user: userReducer,
+  tweets: tweetsReducer
 })
-const store = createStore(reducer, {
-  user: {
-    name: 'Will',
-    age: 35,
-  },
-  tweets: []
+const store = createStore(reducers, {
+
 })
 
 store.subscribe(() => {
